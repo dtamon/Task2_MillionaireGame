@@ -1,0 +1,44 @@
+﻿@model Task2_MillionaireGame.Models.QuestionViewModel
+@{
+    ViewData["Title"] = "Add new Question";
+}
+<h1>@ViewData["Title"]</h1>
+<div class="row">
+    @using (Html.BeginForm("AddQuestion", "Home", FormMethod.Post))
+    {
+        <div class="col-sm-3">
+            <label for="num2">Select level</label>
+            <select for="Level" class="form-control" value="@Model.Level">
+                    <option selected style="display:none"> -- select level -- </option>
+                    @if (Model.Levels != null)
+                    {
+                        @foreach (var level in @Model.Levels)
+                        {
+                            <option value="@level">@level.CurrentLevel</option>
+                        }
+                    }
+                </select>
+        </div>
+        <div class="col-sm-3">
+            <label for="num1">Question</label>
+            <input type="text" class="form-control" id="num1" name="num1" value="@Model.Question" />
+        </div>
+        <div class="col-sm-3">
+            <label for="num2">Correct answer</label>
+            <input type="text" class="form-control" id="num2" name="num2" value="@Model.CorrectAnswer" />
+        </div>
+        <div class="col-sm-3">
+            <label for="num2">Other answers</label>
+            <input type="text" class="form-control" id="result" name="result" value="@Model.Answer1"/>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="result" name="result" value="@Model.Answer2"/>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="result" name="result" value="@Model.Answer3" />
+        </div>
+        <div class="col-sm-3">
+            <button type="submit" class="btn btn-info">Add</button>
+        </div>
+    }
+    </div>

@@ -1,13 +1,21 @@
 using Microsoft.EntityFrameworkCore;
 using Task2_MillionaireGame.Context;
+using Task2_MillionaireGame.Services;
+using Task2_MillionaireGame.Services.AnswerService;
+using Task2_MillionaireGame.Services.LevelService;
+using Task2_MillionaireGame.Services.QuestionService;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-var provider = builder.Services.BuildServiceProvider();
-var configuration = provider.GetRequiredService<IConfiguration>();
-builder.Services.AddDbContext<GameDbContext>(item => item.UseSqlServer(configuration.GetConnectionString("connection")));
+
+builder.Services.AddTransient<IAnswerRepository, AnswerRepository>();
+builder.Services.AddTransient<ILevelRepository, LevelRepository>();
+builder.Services.AddTransient<IQuestionRepository, QuestionRepository>();
+builder.Services.AddTransient<IHomeService, HomeService>();
+
+builder.Services.AddDbContext<GameDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("connection")));
 
 var app = builder.Build();
 

@@ -1,24 +1,54 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Task2_MillionaireGame.Domain;
 using Task2_MillionaireGame.Models;
+using Task2_MillionaireGame.Services;
+using Task2_MillionaireGame.Services.AnswerService;
+using Task2_MillionaireGame.Services.LevelService;
+using Task2_MillionaireGame.Services.QuestionService;
 
 namespace Task2_MillionaireGame.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IHomeService service;
+        private int levelId = 1;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IHomeService service)
         {
+            this.service = service;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(service.GetGameViewModel(levelId));
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public IActionResult Index(GameViewModel model, string answer) 
+        {
+            if (!string.IsNullOrEmpty(answer)) {
+                if (true)
+                {
+                    levelId++;
+                }
+                else
+                {
+                    levelId = 1;
+                }
+            } 
+            else
+            {
+                levelId--;
+                Level stopLevel = service.GetAmountWon(levelId);
+                ViewBag.Message = "Congratulations, you have won " + stopLevel.CurrentLevel + " dollars!";
+            }
+            return View(service.GetGameViewModel(levelId));
+        }
+
+        public IActionResult AddQuestion()
         {
             return View();
         }
