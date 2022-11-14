@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using Task2_MillionaireGame.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+var provider = builder.Services.BuildServiceProvider();
+var configuration = provider.GetRequiredService<IConfiguration>();
+builder.Services.AddDbContext<GameDbContext>(item => item.UseSqlServer(configuration.GetConnectionString("connection")));
 
 var app = builder.Build();
 
