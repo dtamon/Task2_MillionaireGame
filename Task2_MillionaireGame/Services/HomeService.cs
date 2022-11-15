@@ -29,13 +29,12 @@ namespace Task2_MillionaireGame.Services
             var correctAnswer = answers.Where(x => x.IsCorrect == true).FirstOrDefault();
             model = new GameViewModel()
             {
-                Level = levelRepository.GetLevelById(levelId),
+                Level = levelRepository.GetLevelById(levelId).CurrentLevel,
                 Question = drawnQuestion,
                 AnswerA = RandomElement(answers),
                 AnswerB = RandomElement(answers),
                 AnswerC = RandomElement(answers),
-                AnswerD = RandomElement(answers),
-                CorrectAnswer = correctAnswer
+                AnswerD = RandomElement(answers)
             };
 
             return model;

@@ -8,28 +8,29 @@
         @using (Html.BeginForm("Index", "Home", FormMethod.Post))
         {
             <h1>
-                <label for="level">You are now playing for @Model.Level.CurrentLevel</label>
+                <label for="Level" name="Level">You are now playing for @Model.Level</label>
+                <input type="hidden" value=@Model.Level />
             </h1>
             <h2>
-                <label for="question">@Model.Question.Content?</label>
+                <label for="Question" name="Question">@Model.Question.Content?</label>
             </h2>
-            <p></p>
+            <br />
             <div class="row-cols-lg-4">
-                <button type="submit" class="btn btn-info" id="A" value="A" name="answer">@Model.AnswerA.IsCorrect</button>
+                <button type="submit" class="btn btn-info" id="AnswerA" value=@Model.AnswerD name="answer">@Model.AnswerA.IsCorrect</button>
             </div>
-            <p></p>
+            <br />
             <div class="row-cols-lg-4">
-                <button type="submit" class="btn btn-info" id="C" value="B" name="answer">@Model.AnswerB.IsCorrect</button>
+                <button type="submit" class="btn btn-info" id="AnswerC" value=@Model.AnswerD name="answer">@Model.AnswerB.IsCorrect</button>
             </div>
-            <p></p>
+            <br />
             <div class="row-cols-lg-4">
-                <button type="submit" class="btn btn-info" id="C" value="C" name="answer">@Model.AnswerC.IsCorrect</button>
+                <button type="submit" class="btn btn-info" id="AnswerC" value=@Model.AnswerD name="answer">@Model.AnswerC.IsCorrect</button>
             </div>
-            <p></p>
+            <br />
             <div class="row-cols-lg-4">
-                <button type="submit" class="btn btn-info" id="D" value="D" name="answer">@Model.AnswerD.IsCorrect</button>
+                <button type="submit" class="btn btn-info" id="AnswerD" value=@Model.AnswerD name="answer">@Model.AnswerD.IsCorrect</button>
             </div>
-            <p></p>
+            <br />
             <div class="row-cols-lg-4">
                 <button type="submit" class="btn btn-danger" id="stop" value="stop" name="stop">Take Money!</button>
             </div>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.Design;
 using System.Diagnostics;
 using Task2_MillionaireGame.Domain;
 using Task2_MillionaireGame.Models;
@@ -27,16 +28,14 @@ namespace Task2_MillionaireGame.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(GameViewModel model, string answer, string stop) 
+        public IActionResult Index(GameViewModel model, bool answer) 
         {
-            if (string.IsNullOrEmpty(stop)) { 
-                if (service.CheckAnswer(answer)){
-                    levelId++;
-                }
-                else
-                {
-                    levelId = 1;
-                }
+            if (true)
+            {
+                levelId++;
+            } else
+            {
+                levelId = 1;
             }
             return View(service.GetGameViewModel(levelId));
         }
