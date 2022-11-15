@@ -11,8 +11,8 @@ using Task2_MillionaireGame.Context;
 namespace Task2MillionaireGame.Migrations
 {
     [DbContext(typeof(GameDbContext))]
-    [Migration("20221115092147_added DataAnnotations")]
-    partial class addedDataAnnotations
+    [Migration("20221115142632_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,7 +57,7 @@ namespace Task2MillionaireGame.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CurrentLevel")
+                    b.Property<int>("Prize")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

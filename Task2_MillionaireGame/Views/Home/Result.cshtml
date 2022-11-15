@@ -1,8 +1,8 @@
-﻿@{
-    ViewData["Title"] = "Your score is";
+﻿@model Task2_MillionaireGame.Models.GameViewModel
+@{
+    ViewData["Title"] = "You have won ";
 }
 
 <div class="text-center">
-    <h1>@ViewData["Title"]</h1>
-    <h2>@ViewBag.param</h2>
+    <h1>@ViewData["Title"] @Model.PrizeWon$</h1>
 </div>

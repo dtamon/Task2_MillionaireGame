@@ -9,25 +9,25 @@ namespace Task2_MillionaireGame.Services
 {
     public class HomeService : IHomeService
     {
-        private readonly ILevelRepository levelRepository;
-        private readonly IQuestionRepository questionRepository;
-        private readonly IAnswerRepository answerRepository;
+        private readonly ILevelRepository _levelRepository;
+        private readonly IQuestionRepository _questionRepository;
+        private readonly IAnswerRepository _answerRepository;
 
         public HomeService(ILevelRepository levelRepository, IQuestionRepository questionRepository, IAnswerRepository answerRepository)
         {
-            this.levelRepository = levelRepository;
-            this.questionRepository = questionRepository;
-            this.answerRepository = answerRepository;
+            _levelRepository = levelRepository;
+            _questionRepository = questionRepository;
+            _answerRepository = answerRepository;
         }
 
         public GameViewModel GetGameViewModel(int levelId)
         {
-            IList<Question> questions = questionRepository.GetQuestionsById(levelId);
+            IList<Question> questions = _questionRepository.GetQuestionsById(levelId);
             var drawnQuestion = RandomElement(questions);
-            IList<Answer> answers = answerRepository.GetAnwersById(drawnQuestion.Id);
+            IList<Answer> answers = _answerRepository.GetAnwersById(drawnQuestion.Id);
             var model = new GameViewModel()
             {
-                Level = levelRepository.GetLevelById(levelId),
+                Level = _levelRepository.GetLevelById(levelId),
                 CurrentLevel = levelId,
                 Question = drawnQuestion,
                 AnswerA = RandomElement(answers),
@@ -38,27 +38,43 @@ namespace Task2_MillionaireGame.Services
 
             return model;
         }
+        public GameViewModel UpdateGameViewModel(GameViewModel model)
+        {
+            model.CurrentLevel++;
+            model.Level = _levelRepository.GetLevelById(model.CurrentLevel);
+            IList<Question> questions = _questionRepository.GetQuestionsById(model.CurrentLevel);
+            model.Question = RandomElement(questions);
+            IList<Answer> answers = _answerRepository.GetAnwersById(model.Question.Id);
+            model.AnswerA = RandomElement(answers);
+            model.AnswerB = RandomElement(answers);
+            model.AnswerC = RandomElement(answers);
+            model.AnswerD = RandomElement(answers);
+            model.PrizeWon = _levelRepository.GetLevelById(model.CurrentLevel-1).Prize;
+            return model;
+        }
+
+
+
         public int GetAmountWon(int levelId)
         { 
             if(levelId == 1)
             {
-                return 1;
+                return 0;
             } else
             {
                 levelId--;
-                return levelRepository.GetLevelById(levelId).CurrentLevel;
+                return _levelRepository.GetLevelById(levelId).Prize;
             }
             
         }
 
         public bool CheckAnswer(int answerId)
         {
-            bool b = answerRepository.GetAnswer(answerId).IsCorrect;
-            return b;
+            return _answerRepository.GetAnswer(answerId).IsCorrect;
         }
         public int GetLevelsCount()
         {
-            return levelRepository.GetAllLevels().Count();
+            return _levelRepository.GetAllLevels().Count();
         }
 
         public static T RandomElement<T>(IList<T> list)

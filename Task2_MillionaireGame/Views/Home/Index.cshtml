@@ -7,38 +7,42 @@
     <div class="row">
         @using (Html.BeginForm("Index", "Home", FormMethod.Post))
         {
+            
             <h1>
-                @Html.HiddenFor(m => Model.Level.Id)
-                <label for="Level" name="Level">You are now playing for @Model.Level.CurrentLevel</label>
+                <input type="hidden" value="@Model.Level.Id" name="level" />
+                <label for="Level" name="Level">You are now playing for @Model.Level.Prize$</label>
+                <input type="hidden" value="@Model.CurrentLevel" name="CurrentLevel" />
             </h1>
             <h2>
-                @Html.HiddenFor(m => Model.Question.Id)
+                <input type="hidden" value="@Model.Question.Id" name="Question" />
                 <label for="Question" name="Question">@Model.Question.Content</label>
             </h2>
             <br />
             <div class="row-cols-lg-4">
-                @Html.HiddenFor(m => Model.AnswerA.Id)
-                <button type="submit" class="btn btn-info" id="AnswerA" value=@Model.AnswerA.Id name="answerId">@Model.AnswerA.Content</button>
+                <input type="hidden" value="@Model.AnswerA" name="AnswerA" />
+                <button type="submit" class="btn btn-info" id="AnswerA" value=@Model.AnswerA.Id name="answerId">A: @Model.AnswerA.Content</button>
             </div>
             <br />
             <div class="row-cols-lg-4">
-                @Html.HiddenFor(m => Model.AnswerB.Id)
-                <button type="submit" class="btn btn-info" id="AnswerC" value=@Model.AnswerB.Id name="answerId">@Model.AnswerB.Content</button>
+                <input type="hidden" value="@Model.AnswerB" name="AnswerB" />
+                <button type="submit" class="btn btn-info" id="AnswerC" value=@Model.AnswerB.Id name="answerId">B: @Model.AnswerB.Content</button>
             </div>
             <br />
             <div class="row-cols-lg-4">
-                @Html.HiddenFor(m => Model.AnswerC.Id)
-                <button type="submit" class="btn btn-info" id="AnswerC" value=@Model.AnswerC.Id name="answerId">@Model.AnswerC.Content</button>
+                <input type="hidden" value="@Model.AnswerC" name="AnswerC" />
+                <button type="submit" class="btn btn-info" id="AnswerC" value=@Model.AnswerC.Id name="answerId">C: @Model.AnswerC.Content</button>
             </div>
             <br />
             <div class="row-cols-lg-4">
-                @Html.HiddenFor(m => Model.AnswerD.Id)
-                <button type="submit" class="btn btn-info" id="AnswerD" value=@Model.AnswerD.Id name="answerId">@Model.AnswerD.Content</button>
+                <input type="hidden" value="@Model.AnswerD" name="AnswerD" />
+                <button type="submit" class="btn btn-info" id="AnswerD" value=@Model.AnswerD.Id name="answerId">D: @Model.AnswerD.Content</button>
             </div>
-            <br />
-            <div class="row-cols-lg-4">
-                <button type="submit" class="btn btn-danger" id="stop" value="stop" name="stop">Take Money!</button>
-            </div>
+            <br />  
+        }
+        @using (Html.BeginForm("Result", "Home", FormMethod.Post))
+        {
+            <input type="hidden" value="@Model.PrizeWon" name="PrizeWon" />
+            <button type="submit" class="btn btn-danger" id="Prize" value=@Model.PrizeWon name="Prize">Take Money!</button>
         }
     </div>
 </div>

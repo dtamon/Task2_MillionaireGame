@@ -6,6 +6,7 @@ namespace Task2_MillionaireGame.Models
     {
         public Level? Level { get; set; }
         public int CurrentLevel { get; set; }  
+        public int PrizeWon { get; set; }
         public Question? Question { get; set; }
         public Answer? AnswerA { get; set; }
         public Answer? AnswerB { get; set; }

@@ -8,36 +8,47 @@ namespace Task2_MillionaireGame.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IHomeService service;
-        private int levelId = 1;
+        private readonly IHomeService _service;
 
         public HomeController(ILogger<HomeController> logger, IHomeService service)
         {
-            this.service = service;
+            _service = service;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View(service.GetGameViewModel(levelId));
+            return View(_service.GetGameViewModel(1));
         }
 
         [HttpPost]
         public IActionResult Index(GameViewModel model, int answerId) 
         {
-            if (service.CheckAnswer(answerId))
+            if (_service.CheckAnswer(answerId))
             {
-                levelId++;
-            } else
+                if(model.CurrentLevel == 11)
+                {
+                    return View("Millionaire");
+                }
+                else
+                {
+                    return View(_service.UpdateGameViewModel(model));
+                }     
+            } 
+            else
             {
-                levelId = 1;
+                return RedirectToAction("Index");
             }
-            return View(service.GetGameViewModel(levelId));
+            
         }
 
-        public IActionResult Result(int amountWon)
+        public IActionResult Result(GameViewModel model)
         {
-            ViewBag.param = amountWon;
+            return View(model);
+        }
+
+        public IActionResult Millionaire()
+        {
             return View();
         }
 

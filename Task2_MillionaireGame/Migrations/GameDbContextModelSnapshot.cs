@@ -54,7 +54,7 @@ namespace Task2MillionaireGame.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CurrentLevel")
+                    b.Property<int>("Prize")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
