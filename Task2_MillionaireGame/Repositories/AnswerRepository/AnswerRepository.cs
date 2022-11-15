@@ -13,6 +13,11 @@ namespace Task2_MillionaireGame.Services.AnswerService
             this.context = context;
         }
 
+        public Answer GetAnswer(int id)
+        {
+            return context.Answers.FirstOrDefault(x => x.Id == id);
+        }
+
         public List<Answer> GetAnwersById(int id)
         {
             return context.Answers.Where(x => x.Question.Id == id).ToList();

@@ -1,12 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.Design;
 using System.Diagnostics;
-using Task2_MillionaireGame.Domain;
 using Task2_MillionaireGame.Models;
 using Task2_MillionaireGame.Services;
-using Task2_MillionaireGame.Services.AnswerService;
-using Task2_MillionaireGame.Services.LevelService;
-using Task2_MillionaireGame.Services.QuestionService;
 
 namespace Task2_MillionaireGame.Controllers
 {
@@ -28,9 +23,9 @@ namespace Task2_MillionaireGame.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(GameViewModel model, bool answer) 
+        public IActionResult Index(GameViewModel model, int answerId) 
         {
-            if (true)
+            if (service.CheckAnswer(answerId))
             {
                 levelId++;
             } else
@@ -40,8 +35,9 @@ namespace Task2_MillionaireGame.Controllers
             return View(service.GetGameViewModel(levelId));
         }
 
-        public IActionResult AddQuestion()
+        public IActionResult Result(int amountWon)
         {
+            ViewBag.param = amountWon;
             return View();
         }
 

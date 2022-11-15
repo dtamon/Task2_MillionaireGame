@@ -8,27 +8,32 @@
         @using (Html.BeginForm("Index", "Home", FormMethod.Post))
         {
             <h1>
-                <label for="Level" name="Level">You are now playing for @Model.Level</label>
-                <input type="hidden" value=@Model.Level />
+                @Html.HiddenFor(m => Model.Level.Id)
+                <label for="Level" name="Level">You are now playing for @Model.Level.CurrentLevel</label>
             </h1>
             <h2>
-                <label for="Question" name="Question">@Model.Question.Content?</label>
+                @Html.HiddenFor(m => Model.Question.Id)
+                <label for="Question" name="Question">@Model.Question.Content</label>
             </h2>
             <br />
             <div class="row-cols-lg-4">
-                <button type="submit" class="btn btn-info" id="AnswerA" value=@Model.AnswerD name="answer">@Model.AnswerA.IsCorrect</button>
+                @Html.HiddenFor(m => Model.AnswerA.Id)
+                <button type="submit" class="btn btn-info" id="AnswerA" value=@Model.AnswerA.Id name="answerId">@Model.AnswerA.Content</button>
             </div>
             <br />
             <div class="row-cols-lg-4">
-                <button type="submit" class="btn btn-info" id="AnswerC" value=@Model.AnswerD name="answer">@Model.AnswerB.IsCorrect</button>
+                @Html.HiddenFor(m => Model.AnswerB.Id)
+                <button type="submit" class="btn btn-info" id="AnswerC" value=@Model.AnswerB.Id name="answerId">@Model.AnswerB.Content</button>
             </div>
             <br />
             <div class="row-cols-lg-4">
-                <button type="submit" class="btn btn-info" id="AnswerC" value=@Model.AnswerD name="answer">@Model.AnswerC.IsCorrect</button>
+                @Html.HiddenFor(m => Model.AnswerC.Id)
+                <button type="submit" class="btn btn-info" id="AnswerC" value=@Model.AnswerC.Id name="answerId">@Model.AnswerC.Content</button>
             </div>
             <br />
             <div class="row-cols-lg-4">
-                <button type="submit" class="btn btn-info" id="AnswerD" value=@Model.AnswerD name="answer">@Model.AnswerD.IsCorrect</button>
+                @Html.HiddenFor(m => Model.AnswerD.Id)
+                <button type="submit" class="btn btn-info" id="AnswerD" value=@Model.AnswerD.Id name="answerId">@Model.AnswerD.Content</button>
             </div>
             <br />
             <div class="row-cols-lg-4">

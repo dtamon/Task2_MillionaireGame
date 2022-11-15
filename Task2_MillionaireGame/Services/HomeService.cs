@@ -12,7 +12,6 @@ namespace Task2_MillionaireGame.Services
         private readonly ILevelRepository levelRepository;
         private readonly IQuestionRepository questionRepository;
         private readonly IAnswerRepository answerRepository;
-        public GameViewModel model;
 
         public HomeService(ILevelRepository levelRepository, IQuestionRepository questionRepository, IAnswerRepository answerRepository)
         {
@@ -26,10 +25,10 @@ namespace Task2_MillionaireGame.Services
             IList<Question> questions = questionRepository.GetQuestionsById(levelId);
             var drawnQuestion = RandomElement(questions);
             IList<Answer> answers = answerRepository.GetAnwersById(drawnQuestion.Id);
-            var correctAnswer = answers.Where(x => x.IsCorrect == true).FirstOrDefault();
-            model = new GameViewModel()
+            var model = new GameViewModel()
             {
-                Level = levelRepository.GetLevelById(levelId).CurrentLevel,
+                Level = levelRepository.GetLevelById(levelId),
+                CurrentLevel = levelId,
                 Question = drawnQuestion,
                 AnswerA = RandomElement(answers),
                 AnswerB = RandomElement(answers),
@@ -39,54 +38,27 @@ namespace Task2_MillionaireGame.Services
 
             return model;
         }
-        public Level GetAmountWon(int levelId)
-        {
-            return levelRepository.GetLevelById(levelId);
+        public int GetAmountWon(int levelId)
+        { 
+            if(levelId == 1)
+            {
+                return 1;
+            } else
+            {
+                levelId--;
+                return levelRepository.GetLevelById(levelId).CurrentLevel;
+            }
+            
         }
 
-        public bool CheckAnswer(string answer)
+        public bool CheckAnswer(int answerId)
         {
-            switch (answer)
-            {
-                case "A":
-                    if (model.AnswerA.IsCorrect)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                case "B":
-                    if (model.AnswerB.IsCorrect)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                case "C":
-                    if (model.AnswerC.IsCorrect)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                case "D":
-                    if (model.AnswerD.IsCorrect)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                default: 
-                    return false;
-            }
+            bool b = answerRepository.GetAnswer(answerId).IsCorrect;
+            return b;
+        }
+        public int GetLevelsCount()
+        {
+            return levelRepository.GetAllLevels().Count();
         }
 
         public static T RandomElement<T>(IList<T> list)
@@ -94,6 +66,8 @@ namespace Task2_MillionaireGame.Services
             T element = list[new Random().Next(list.Count)];
             list.Remove(element);
             return element;
-        }    
+        }
+
+        
     }
 }
