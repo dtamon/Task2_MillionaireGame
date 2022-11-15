@@ -5,7 +5,7 @@
 
 <div class="text-center">
     <div class="row">
-        @using(Html.BeginForm("Index", "Home", FormMethod.Post))
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
         {
             <h1>
                 <label for="level">You are now playing for @Model.Level.CurrentLevel</label>
@@ -15,22 +15,23 @@
             </h2>
             <p></p>
             <div class="row-cols-lg-4">
-                <button type="submit" class="btn btn-info" id="AnswerA" value="@Model.AnswerA" name="answer">@Model.AnswerA.Content</button>
+                <button type="submit" class="btn btn-info" id="A" value="A" name="answer">@Model.AnswerA.IsCorrect</button>
             </div>
             <p></p>
             <div class="row-cols-lg-4">
-                <button type="submit" class="btn btn-info" id="AnswerB" value="@Model.AnswerB" name="answer">@Model.AnswerB.Content</button>
+                <button type="submit" class="btn btn-info" id="C" value="B" name="answer">@Model.AnswerB.IsCorrect</button>
             </div>
             <p></p>
             <div class="row-cols-lg-4">
-                <button type="submit" class="btn btn-info" id="AnswerC" value="@Model.AnswerC" name="answer">@Model.AnswerC.Content</button>
+                <button type="submit" class="btn btn-info" id="C" value="C" name="answer">@Model.AnswerC.IsCorrect</button>
             </div>
             <p></p>
             <div class="row-cols-lg-4">
-                <button type="submit" class="btn btn-info" id="AnswerD" value="@Model.AnswerD" name="answer">@Model.AnswerD.Content</button>
+                <button type="submit" class="btn btn-info" id="D" value="D" name="answer">@Model.AnswerD.IsCorrect</button>
             </div>
+            <p></p>
             <div class="row-cols-lg-4">
-                <button type="submit" class="btn btn-danger" id="takeMoney" value="TakeMoney" name="takeMoney">@Model.AnswerD.Content</button>
+                <button type="submit" class="btn btn-danger" id="stop" value="stop" name="stop">Take Money!</button>
             </div>
         }
     </div>

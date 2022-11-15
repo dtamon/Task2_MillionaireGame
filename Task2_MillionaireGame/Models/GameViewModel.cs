@@ -10,5 +10,6 @@ namespace Task2_MillionaireGame.Models
         public Answer? AnswerB { get; set; }
         public Answer? AnswerC { get; set; }
         public Answer? AnswerD { get; set; }
+        public Answer? CorrectAnswer { get; set; }
     }
 }

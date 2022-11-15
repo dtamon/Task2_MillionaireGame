@@ -7,11 +7,14 @@ namespace Task2_MillionaireGame.Services
     {
         public GameViewModel GetGameViewModel(int levelId);
         public Level GetAmountWon(int levelId);
+        public bool CheckAnswer(string answer);
         public static T RandomElement<T>(IList<T> list)
         {
             T element = list[new Random().Next(list.Count)];
             list.Remove(element);
             return element;
         }
+
+        
     }
 }

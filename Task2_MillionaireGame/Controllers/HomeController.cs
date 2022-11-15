@@ -27,23 +27,16 @@ namespace Task2_MillionaireGame.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(GameViewModel model, string answer) 
+        public IActionResult Index(GameViewModel model, string answer, string stop) 
         {
-            if (!string.IsNullOrEmpty(answer)) {
-                if (true)
-                {
+            if (string.IsNullOrEmpty(stop)) { 
+                if (service.CheckAnswer(answer)){
                     levelId++;
                 }
                 else
                 {
                     levelId = 1;
                 }
-            } 
-            else
-            {
-                levelId--;
-                Level stopLevel = service.GetAmountWon(levelId);
-                ViewBag.Message = "Congratulations, you have won " + stopLevel.CurrentLevel + " dollars!";
             }
             return View(service.GetGameViewModel(levelId));
         }
