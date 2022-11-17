@@ -14,7 +14,7 @@ namespace Task2_MillionaireGame.Services.QuestionService
             this.context = context;
         }
 
-        public List<Question> GetQuestionsById(int id)
+        public List<Question> GetQuestionsByLevelId(int id)
         {
             return context.Questions.Where(x => x.Level.Id == id).ToList();
         }

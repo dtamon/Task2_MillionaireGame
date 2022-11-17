@@ -5,7 +5,7 @@ namespace Task2_MillionaireGame.Services.QuestionService
 {
     public interface IQuestionRepository
     {
-        public List<Question> GetQuestionsById(int id);
+        public List<Question> GetQuestionsByLevelId(int id);
 
     }
 }

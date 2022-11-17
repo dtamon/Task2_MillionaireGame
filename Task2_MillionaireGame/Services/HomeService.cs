@@ -22,9 +22,9 @@ namespace Task2_MillionaireGame.Services
 
         public GameViewModel GetGameViewModel(int levelId)
         {
-            IList<Question> questions = _questionRepository.GetQuestionsById(levelId);
+            IList<Question> questions = _questionRepository.GetQuestionsByLevelId(levelId);
             var drawnQuestion = RandomElement(questions);
-            IList<Answer> answers = _answerRepository.GetAnwersById(drawnQuestion.Id);
+            IList<Answer> answers = _answerRepository.GetAnwersByQuestionId(drawnQuestion.Id);
             var model = new GameViewModel()
             {
                 Level = _levelRepository.GetLevelById(levelId),
@@ -40,32 +40,18 @@ namespace Task2_MillionaireGame.Services
         }
         public GameViewModel UpdateGameViewModel(GameViewModel model)
         {
+            model.PrizeWon = _levelRepository.GetLevelById(model.CurrentLevel).Prize;
             model.CurrentLevel++;
             model.Level = _levelRepository.GetLevelById(model.CurrentLevel);
-            IList<Question> questions = _questionRepository.GetQuestionsById(model.CurrentLevel);
+            IList<Question> questions = _questionRepository.GetQuestionsByLevelId(model.CurrentLevel);
             model.Question = RandomElement(questions);
-            IList<Answer> answers = _answerRepository.GetAnwersById(model.Question.Id);
+            IList<Answer> answers = _answerRepository.GetAnwersByQuestionId(model.Question.Id);
             model.AnswerA = RandomElement(answers);
             model.AnswerB = RandomElement(answers);
             model.AnswerC = RandomElement(answers);
             model.AnswerD = RandomElement(answers);
-            model.PrizeWon = _levelRepository.GetLevelById(model.CurrentLevel-1).Prize;
-            return model;
-        }
-
-
-
-        public int GetAmountWon(int levelId)
-        { 
-            if(levelId == 1)
-            {
-                return 0;
-            } else
-            {
-                levelId--;
-                return _levelRepository.GetLevelById(levelId).Prize;
-            }
             
+            return model;
         }
 
         public bool CheckAnswer(int answerId)
@@ -74,7 +60,7 @@ namespace Task2_MillionaireGame.Services
         }
         public int GetLevelsCount()
         {
-            return _levelRepository.GetAllLevels().Count();
+            return _levelRepository.GetLevels().Count();
         }
 
         public static T RandomElement<T>(IList<T> list)

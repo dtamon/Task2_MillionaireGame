@@ -20,29 +20,29 @@
             <br />
             <div class="row-cols-lg-4">
                 <input type="hidden" value="@Model.AnswerA" name="AnswerA" />
-                <button type="submit" class="btn btn-info" id="AnswerA" value=@Model.AnswerA.Id name="answerId">A: @Model.AnswerA.Content</button>
+                <button type="submit" class="btn btn-info" id="a" value=@Model.AnswerA.Id name="answerId">A: @Model.AnswerA.Content</button>
             </div>
             <br />
             <div class="row-cols-lg-4">
                 <input type="hidden" value="@Model.AnswerB" name="AnswerB" />
-                <button type="submit" class="btn btn-info" id="AnswerC" value=@Model.AnswerB.Id name="answerId">B: @Model.AnswerB.Content</button>
+                <button type="submit" class="btn btn-info" id="b" value=@Model.AnswerB.Id name="answerId">B: @Model.AnswerB.Content</button>
             </div>
             <br />
             <div class="row-cols-lg-4">
                 <input type="hidden" value="@Model.AnswerC" name="AnswerC" />
-                <button type="submit" class="btn btn-info" id="AnswerC" value=@Model.AnswerC.Id name="answerId">C: @Model.AnswerC.Content</button>
+                <button type="submit" class="btn btn-info" id="c" value=@Model.AnswerC.Id name="answerId">C: @Model.AnswerC.Content</button>
             </div>
             <br />
             <div class="row-cols-lg-4">
                 <input type="hidden" value="@Model.AnswerD" name="AnswerD" />
-                <button type="submit" class="btn btn-info" id="AnswerD" value=@Model.AnswerD.Id name="answerId">D: @Model.AnswerD.Content</button>
+                <button type="submit" class="btn btn-info" id="d" value=@Model.AnswerD.Id name="answerId">D: @Model.AnswerD.Content</button>
             </div>
             <br />  
         }
         @using (Html.BeginForm("Result", "Home", FormMethod.Post))
         {
             <input type="hidden" value="@Model.PrizeWon" name="PrizeWon" />
-            <button type="submit" class="btn btn-danger" id="Prize" value=@Model.PrizeWon name="Prize">Take Money!</button>
+            <button type="submit" class="btn btn-danger" id="Prize" value=@Model.PrizeWon name="Prize">Take @Model.PrizeWon$</button>
         }
     </div>
 </div>

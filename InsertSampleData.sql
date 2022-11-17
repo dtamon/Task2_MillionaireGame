@@ -1,5 +1,5 @@
 insert into Levels
-values (500), (1000), (2000), (5000), (10000), (20000), (40000), (75000), (125000), (250000), (1000000);
+values (500), (1000), (2000), (5000), (10000), (20000), (40000), (75000), (125000), (250000), (500000), (1000000);
 
 insert into Questions
 values ('An airplanes black box is usually what color?', 1),
@@ -34,7 +34,11 @@ values ('An airplanes black box is usually what color?', 1),
 ('What is the correct spelling of New Mexicos largest city?', 10),
 ('What is the medical term for a doctors identification of a disease?', 11),
 ('What is the name of Marios brother in the "Super Mario" video games?', 11),
-('What is the name of the Newtonian law that states "An object in Motion tends to stay in motion"?', 11);
+('What is the name of the Newtonian law that states "An object in Motion tends to stay in motion"?', 11),
+('Which city is the capital of Scotland?', 12),
+('In British currency, how many pence make a pound?', 12),
+('In computer terminology, what does the acronym "FTP" stand for?', 12);
+
 
 insert into Answers 
 values ('orange', 1, 1),
@@ -200,7 +204,22 @@ values ('orange', 1, 1),
 ('Law of Inertia', 1, 33),
 ('Law of Thermodynamics', 0, 33),
 ('Law of Thermodynamics', 0, 33),
-('Law of Gravitation', 0, 33);
+('Law of Gravitation', 0, 33),
+
+('Edinburgh', 1, 34),
+('Glasgow', 0, 34),
+('Liverpool', 0, 34),
+('Birmingham', 0, 34),
+
+('100', 1, 35),
+('10', 0, 35),
+('500', 0, 35),
+('1000', 0, 35),
+
+('file transfer protocol', 1, 36),
+('full time portal', 0, 36),
+('full text processor', 0, 36),
+('free to print', 0, 36);
 
 
 Select * from Questions q 

@@ -11,7 +11,7 @@ namespace Task2_MillionaireGame.Services.LevelService
         {
             this.context = context;
         }
-        public List<Level> GetAllLevels()
+        public List<Level> GetLevels()
         {
             return context.Levels.ToList();
         }

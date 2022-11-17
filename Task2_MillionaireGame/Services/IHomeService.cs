@@ -7,7 +7,6 @@ namespace Task2_MillionaireGame.Services
     {
         public GameViewModel GetGameViewModel(int levelId);
         public GameViewModel UpdateGameViewModel(GameViewModel gameViewModel);
-        public int GetAmountWon(int levelId);
         public bool CheckAnswer(int answerId);
         public int GetLevelsCount();
         public static T RandomElement<T>(IList<T> list)

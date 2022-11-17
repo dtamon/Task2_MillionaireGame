@@ -18,7 +18,7 @@ namespace Task2_MillionaireGame.Services.AnswerService
             return context.Answers.FirstOrDefault(x => x.Id == id);
         }
 
-        public List<Answer> GetAnwersById(int id)
+        public List<Answer> GetAnwersByQuestionId(int id)
         {
             return context.Answers.Where(x => x.Question.Id == id).ToList();
         }

@@ -9,11 +9,13 @@ namespace Task2_MillionaireGame.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IHomeService _service;
+        private int levelsCount;
 
         public HomeController(ILogger<HomeController> logger, IHomeService service)
         {
             _service = service;
             _logger = logger;
+            levelsCount = _service.GetLevelsCount();
         }
 
         public IActionResult Index()
@@ -26,7 +28,7 @@ namespace Task2_MillionaireGame.Controllers
         {
             if (_service.CheckAnswer(answerId))
             {
-                if(model.CurrentLevel == 11)
+                if(model.CurrentLevel == levelsCount)
                 {
                     return View("Millionaire");
                 }
