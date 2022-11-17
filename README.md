@@ -2,6 +2,12 @@
 
 Simple implementation of popular TV show
 
+## How to play?
+
+#### 1. Run project
+#### 2. Click buttons with correct answers, if you miss, you'll start from the beginning. 
+#### 3. If you dont know the answer you can press button "Take Money" to stop the game and take money you won so far.
+#### 4. If you manage to answer correctly on all questions, you'll become a millionaire :)
 
 ## Configuration
 
@@ -22,7 +28,7 @@ Run `update-database` command in Package Manager Console
 - [HomeController](https://github.com/dtamon/Task2_MillionaireGame/blob/master/Task2_MillionaireGame/Controllers/HomeController.cs)'s job is to communicate between View and [HomeService](https://github.com/dtamon/Task2_MillionaireGame/blob/master/Task2_MillionaireGame/Services/HomeService.cs) and to decide which View should be displayed depending on the correctness of the answer and the level the player is at 
 - [HomeService](https://github.com/dtamon/Task2_MillionaireGame/blob/master/Task2_MillionaireGame/Services/HomeService.cs)'s job is to call [Repositories](https://github.com/dtamon/Task2_MillionaireGame/tree/master/Task2_MillionaireGame/Repositories) to access data from database, cast received data to [GameViewModel](https://github.com/dtamon/Task2_MillionaireGame/tree/master/Task2_MillionaireGame/Models) that will be displayed in View, check correctness of chosen answers and randomize the choice of questions and order of answers 
 - [Repositories](https://github.com/dtamon/Task2_MillionaireGame/tree/master/Task2_MillionaireGame/Repositories) job is to get needed data from database using LINQ, each repository corresponds to a table from the database
-- [GameViewModel](https://github.com/dtamon/Task2_MillionaireGame/blob/master/Task2_MillionaireGame/Models/GameViewModel.cs) is a complex model composed of data from all tables from the database. It contains an information about [Level](https://github.com/dtamon/Task2_MillionaireGame/blob/master/Task2_MillionaireGame/Context/Level.cs) that the player is currently on, randomly selected [Question](https://github.com/dtamon/Task2_MillionaireGame/blob/master/Task2_MillionaireGame/Context/Question.cs) from a level and randomly assigned [Answers](https://github.com/dtamon/Task2_MillionaireGame/blob/master/Task2_MillionaireGame/Context/Question.cs) to the question
+- [GameViewModel](https://github.com/dtamon/Task2_MillionaireGame/blob/master/Task2_MillionaireGame/Models/GameViewModel.cs) is a complex model composed of data from all tables from the database. It contains an information about [Level](https://github.com/dtamon/Task2_MillionaireGame/blob/master/Task2_MillionaireGame/Context/Level.cs) that the player is currently on, the Prize that player has won for the previous question and will get if he decides to Take Money, randomly selected [Question](https://github.com/dtamon/Task2_MillionaireGame/blob/master/Task2_MillionaireGame/Context/Question.cs) from a level and randomly assigned [Answers](https://github.com/dtamon/Task2_MillionaireGame/blob/master/Task2_MillionaireGame/Context/Question.cs) to the question
 
 ## Database (Microsoft SQL Server)
 #### Database consist of three tables:
