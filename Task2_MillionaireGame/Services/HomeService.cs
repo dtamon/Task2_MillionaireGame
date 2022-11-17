@@ -20,15 +20,16 @@ namespace Task2_MillionaireGame.Services
             _answerRepository = answerRepository;
         }
 
-        public GameViewModel GetGameViewModel(int levelId)
+        public GameViewModel GetGameViewModel()
         {
-            IList<Question> questions = _questionRepository.GetQuestionsByLevelId(levelId);
+            var level = _levelRepository.GetLevelById(1);
+            IList<Question> questions = _questionRepository.GetQuestionsByLevelId(level.Id);
             var drawnQuestion = RandomElement(questions);
             IList<Answer> answers = _answerRepository.GetAnwersByQuestionId(drawnQuestion.Id);
             var model = new GameViewModel()
             {
-                Level = _levelRepository.GetLevelById(levelId),
-                CurrentLevel = levelId,
+                Level = level,
+                CurrentLevel = level.Id,
                 Question = drawnQuestion,
                 AnswerA = RandomElement(answers),
                 AnswerB = RandomElement(answers),

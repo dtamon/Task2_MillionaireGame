@@ -20,7 +20,7 @@ namespace Task2_MillionaireGame.Controllers
 
         public IActionResult Index()
         {
-            return View(_service.GetGameViewModel(1));
+            return View(_service.GetGameViewModel());
         }
 
         [HttpPost]

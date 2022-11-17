@@ -5,7 +5,7 @@ namespace Task2_MillionaireGame.Services
 {
     public interface IHomeService
     {
-        public GameViewModel GetGameViewModel(int levelId);
+        public GameViewModel GetGameViewModel();
         public GameViewModel UpdateGameViewModel(GameViewModel gameViewModel);
         public bool CheckAnswer(int answerId);
         public int GetLevelsCount();
