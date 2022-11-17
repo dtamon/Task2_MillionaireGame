@@ -7,9 +7,9 @@ namespace Task2_MillionaireGame.Domain
         [Key]
         public int Id { get; set; }
         [Required]
-        public string? Content { get; set; }
+        public string Content { get; set; }
         [Required]
-        public Level? Level { get; set; }
+        public Level Level { get; set; }
         public ICollection<Answer>? Answers { get; set; }
     }
 }
