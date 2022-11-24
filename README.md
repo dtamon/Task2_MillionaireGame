@@ -35,6 +35,3 @@ Run `update-database` command in Package Manager Console
 - [Levels](https://github.com/dtamon/Task2_MillionaireGame/blob/master/Task2_MillionaireGame/Context/Level.cs) (containing Id and the Prize for completion of a level)
 - [Questions](https://github.com/dtamon/Task2_MillionaireGame/blob/master/Task2_MillionaireGame/Context/Question.cs) (containing Id, Content of the question and the Id of the level to which it is assigned)
 - [Answers](https://github.com/dtamon/Task2_MillionaireGame/blob/master/Task2_MillionaireGame/Context/Question.cs) (containing Id, Content of the answer, information whether answer is true or false and If of the question to which it relates)
-
-## Final commit
-Actually my implementation was done at Nov 15 with 'everything working' commit, later I did just few Quality of Life changes in the code to make it look prettier
